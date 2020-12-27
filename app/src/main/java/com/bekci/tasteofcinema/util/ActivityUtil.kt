@@ -1,9 +1,9 @@
-package util
+package com.bekci.tasteofcinema.util
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 
-class ActivityUtil {
+object ActivityUtil {
 
     fun changeFragment(fragment: Fragment, tag: String? = null, manager: FragmentManager, container: Int, addToStack: Boolean) {
         manager.apply{
