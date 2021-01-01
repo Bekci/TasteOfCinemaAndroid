@@ -5,30 +5,53 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bekci.tasteofcinema.R
+import com.bekci.tasteofcinema.`interface`.RecyclerClickInterface
+import com.bekci.tasteofcinema.model.ListMainInfo
 import kotlinx.android.synthetic.main.lists_list_item.view.*
 
-class HomePageListRecyclerAdapter : RecyclerView.Adapter<HomePageListRecyclerAdapter.ViewHolder>() {
+class HomePageListRecyclerAdapter(recyclerList: List<ListMainInfo>, clickInterface: RecyclerClickInterface) :
+    RecyclerView.Adapter<HomePageListRecyclerAdapter.ViewHolder>() {
+
+    private var listLists : MutableList<ListMainInfo> = mutableListOf()
+    private var clickListener: RecyclerClickInterface = clickInterface
+
+    init {
+        listLists.addAll(recyclerList)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.lists_list_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+        val item = listLists[position]
+        holder.listTitle.text = item.title
+        holder.listDetail.text = item.detail
+        holder.listContainer.setOnClickListener { clickListener.onItemClicked(item) }
     }
 
+    fun addNewLists(newItems: List<ListMainInfo>){
+        listLists.addAll(newItems)
+        notifyDataSetChanged()
+    }
+
+
     override fun getItemCount(): Int {
-        return 5
+        return listLists.size
     }
 
     class  ViewHolder : RecyclerView.ViewHolder{
         var listImage: ImageView
         var listTitle: TextView
         var listDetail : TextView
+        var listContainer: ConstraintLayout
 
         constructor(itemView: View) : super(itemView) {
+            listContainer = itemView.findViewById(R.id.item_lists_container)
             listDetail = itemView.findViewById(R.id.item_lists_tv_detail)
             listTitle = itemView.findViewById(R.id.item_lists_tv_title)
             listImage = itemView.findViewById(R.id.item_lists_cv_image)

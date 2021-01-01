@@ -2,11 +2,12 @@ package com.bekci.tasteofcinema.home
 
 import com.bekci.tasteofcinema.core.BasePresenter
 import com.bekci.tasteofcinema.core.BaseView
+import com.bekci.tasteofcinema.model.ListMainInfo
 
 interface HomePageContract {
 
     interface View : BaseView<Presenter> {
-        fun onListFetched()
+        fun onListFetched(listList :List<ListMainInfo>)
     }
 
     interface Presenter: BasePresenter {

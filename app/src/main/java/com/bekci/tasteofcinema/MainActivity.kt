@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bekci.tasteofcinema.home.HomePageFragment
 import com.bekci.tasteofcinema.util.ActivityUtil
+import com.bekci.tasteofcinema.util.WebSiteParser
 
 class MainActivity : AppCompatActivity() {
 

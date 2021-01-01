@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item_lists_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/themeHardLightGrey"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left"
         android:layout_width="match_parent"
@@ -20,22 +19,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9">
+        app:layout_constraintGuide_percent="0.85">
     </androidx.constraintlayout.widget.Guideline>
 
     <View
-        android:id="@+id/item_lists_view"
+        android:id="@+id/item_saved_films_view"
         android:layout_width="0dp"
         android:layout_height="3dp"
         android:background="@color/themeLightGrey"
-        app:layout_constraintTop_toBottomOf="@id/item_lists_tv_detail"
+        app:layout_constraintTop_toBottomOf="@id/item_saved_films_tv_detail"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:src="@drawable/list_placeholder"
-        android:id="@+id/item_lists_cv_image"
+        android:id="@+id/item_saved_films_cv_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,34 +44,34 @@
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <TextView
-        android:id="@+id/item_lists_tv_title"
+        android:id="@+id/item_saved_films_tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="List Title"
+        android:text="Film Title (Year)"
         android:layout_margin="10dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/item_lists_tv_detail"
+        android:id="@+id/item_saved_films_tv_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="List Detail"
         android:layout_margin="10dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@id/item_lists_tv_title" />
+        app:layout_constraintTop_toBottomOf="@id/item_saved_films_tv_title" />
 
-    <ImageView
+    <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/arrow_right"
+        android:text="asdasdas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="parent">
 
-    </ImageView>
+    </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TasteOfCinema</string>
+
+    <string name="frag_listmain_start_tour">Start Tour</string>
+    <string name="frag_listmain_desc_iv">List Poster</string>
+
+    <string name="frag_singlefilm_add_database">Add to List</string>
+
+
+    <string name="frag_home_progress_text">Loading lists</string>
 </resources>
