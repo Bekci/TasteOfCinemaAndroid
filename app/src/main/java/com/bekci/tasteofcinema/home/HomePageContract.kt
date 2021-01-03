@@ -11,7 +11,7 @@ interface HomePageContract {
     }
 
     interface Presenter: BasePresenter {
-
         fun fetchLists()
+        fun resetNumFetchedPages()
     }
 }

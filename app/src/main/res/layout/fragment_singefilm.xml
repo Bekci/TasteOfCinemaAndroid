@@ -20,6 +20,7 @@
         app:layout_constraintGuide_percent="0.45"/>
 
     <ImageView
+        android:id="@+id/frag_singlefilm_iv_filmImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/view"
@@ -39,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideline_top_1"
         android:orientation="horizontal">
         <TextView
-            android:textColor="@color/themeViolet"
+            style="@style/AppTextTitleBigger"
             android:id="@+id/frag_singlefilm_tv_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -55,6 +56,8 @@
         <TextView
             android:id="@+id/frag_singlefilm_tv_detail"
             android:layout_width="match_parent"
+            style="@style/AppTextDetailBigger"
+            android:layout_marginBottom="32dp"
             android:layout_height="wrap_content"/>
     </ScrollView>
 

@@ -1,6 +1,8 @@
 package com.bekci.tasteofcinema.home
 
 import com.bekci.tasteofcinema.`interface`.ParserInterface
+import com.bekci.tasteofcinema.model.Film
+import com.bekci.tasteofcinema.model.ListContent
 import com.bekci.tasteofcinema.model.ListMainInfo
 import com.bekci.tasteofcinema.util.WebSiteParser
 
@@ -11,6 +13,10 @@ class HomePagePresenter(view: HomePageContract.View) : HomePageContract.Presente
 
     override fun fetchLists() {
         WebSiteParser.parseLists(currentListPage, this)
+    }
+
+    override fun resetNumFetchedPages() {
+        currentListPage = 1
     }
 
     override fun onStart() {
@@ -25,5 +31,11 @@ class HomePagePresenter(view: HomePageContract.View) : HomePageContract.Presente
         view?.onListFetched(listLists)
         currentListPage += 1
     }
+
+    override fun onListContentParsed(listContent: ListContent) {
+
+    }
+
+    override fun onListPageParsed(listFilms: List<Film>) {}
 
 }

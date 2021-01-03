@@ -41,8 +41,14 @@ class HomePageFragment : Fragment(), HomePageContract.View, RecyclerClickInterfa
         setPresenter(HomePagePresenter(this))
         init(view)
 
-        progressCardView.visibility = View.VISIBLE
-        presenter?.fetchLists()
+        //Show previous content when returned this fragment with back button
+        if(homePageListRecyclerAdapter != null){
+            listRecycler.adapter = homePageListRecyclerAdapter
+        }
+        else{
+            progressCardView.visibility = View.VISIBLE
+            presenter?.fetchLists()
+        }
     }
 
     private fun init(view : View){
@@ -67,7 +73,6 @@ class HomePageFragment : Fragment(), HomePageContract.View, RecyclerClickInterfa
         if (!isRecyclerInit){
             homePageListRecyclerAdapter = HomePageListRecyclerAdapter(listList, this)
             listRecycler.adapter = homePageListRecyclerAdapter
-            isRecyclerInit = true
         }
         // Add new items to recycler
         else{
@@ -88,8 +93,12 @@ class HomePageFragment : Fragment(), HomePageContract.View, RecyclerClickInterfa
         listMainFrag.arguments = bundle
 
         activity?.let {
+            // When returned from another page, below variable stays as true
+            // Because of it fetched content did not shown on the page see onListFetched
+            isRecyclerInit = false
             ActivityUtil.changeFragment(listMainFrag, ListMainFragment.TAG,
                 it.supportFragmentManager, R.id.act_main_fl_container, true)
+
         }
 
     }

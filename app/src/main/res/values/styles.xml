@@ -8,4 +8,27 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="AppText">
+    </style>
+
+    <style name="AppTextTitleBigger" parent="AppText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/themeViolet</item>
+    </style>
+
+    <style name="AppTextTitle" parent="AppText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/themeViolet</item>
+    </style>
+
+    <style name="AppTextDetailBigger" parent="AppText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="AppTextDetail" parent="AppText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
