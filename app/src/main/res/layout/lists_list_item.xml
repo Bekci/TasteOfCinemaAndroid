@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15">
+        app:layout_constraintGuide_percent="0.2">
     </androidx.constraintlayout.widget.Guideline>
 
     <androidx.constraintlayout.widget.Guideline
@@ -38,6 +38,7 @@
         android:id="@+id/item_lists_cv_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/item_lists_tv_title"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +49,6 @@
         android:id="@+id/item_lists_tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="List Title"
         style="@style/AppTextTitle"
         android:layout_margin="10dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
@@ -59,9 +59,10 @@
         android:id="@+id/item_lists_tv_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="List Detail"
         style="@style/AppTextDetail"
         android:layout_margin="10dp"
+        android:maxLines="4"
+        android:ellipsize="end"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@id/item_lists_tv_title" />

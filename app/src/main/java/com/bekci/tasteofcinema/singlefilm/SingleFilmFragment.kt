@@ -1,5 +1,7 @@
 package com.bekci.tasteofcinema.singlefilm
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +13,8 @@ import androidx.fragment.app.Fragment
 import com.bekci.tasteofcinema.R
 import com.bekci.tasteofcinema.model.Film
 import com.bekci.tasteofcinema.model.ListContent
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 class SingleFilmFragment : Fragment(), SingleFilmContract.View{
 
@@ -47,9 +51,15 @@ class SingleFilmFragment : Fragment(), SingleFilmContract.View{
         filmTitle  = view.findViewById(R.id.frag_singlefilm_tv_title)
         filmImage = view.findViewById(R.id.frag_singlefilm_iv_filmImage)
 
-        filmObj?.let {
+        filmObj?.let { it ->
             filmDetail.text = it.detail
             filmTitle.text = it.title
+            activity?.let { itC ->
+                Glide.with(itC)
+                    .load(it.imgURL?.replace("http", "https"))
+                    .placeholder(ColorDrawable(Color.BLACK))
+                    .into(filmImage)
+            }
         }
     }
 

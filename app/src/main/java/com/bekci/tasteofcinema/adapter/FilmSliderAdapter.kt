@@ -1,5 +1,6 @@
 package com.bekci.tasteofcinema.adapter
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -13,6 +14,7 @@ class FilmSliderAdapter(fm: FragmentManager, films: MutableList<Film>) : Fragmen
     private val filmList: MutableList<Film>  = films
 
     override fun getCount(): Int = filmList.size
+
 
     override fun getItem(position: Int): Fragment {
         val singleFilmFragment = SingleFilmFragment()

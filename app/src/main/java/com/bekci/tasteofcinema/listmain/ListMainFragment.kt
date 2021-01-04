@@ -17,6 +17,7 @@ import com.bekci.tasteofcinema.model.ListContent
 import com.bekci.tasteofcinema.model.ListMainInfo
 import com.bekci.tasteofcinema.util.ActivityUtil
 import com.bekci.tasteofcinema.util.WebSiteParser
+import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ListMainFragment: Fragment(), ListMainContract.View {
@@ -50,7 +51,10 @@ class ListMainFragment: Fragment(), ListMainContract.View {
         arguments?.let {
             listMainObj = it.getParcelable("listMainObj")
         }
-        setPresenter(ListMainPresenter(this))
+
+        if(presenter == null)
+            setPresenter(ListMainPresenter(this))
+
         init(view)
     }
 
@@ -64,20 +68,36 @@ class ListMainFragment: Fragment(), ListMainContract.View {
         listMainObj?.let {
             listTitle.text = it.title
             listDetail.text = it.detail
-            progressCard.visibility = View.VISIBLE
-            presenter?.fetchListContent(it)
+
+            if (this.listContent == null){
+                progressCard.visibility = View.VISIBLE
+                presenter?.fetchListContent(it)
+            }
+            else{
+                setListDetail(this.listContent!!)
+            }
         }
 
         floatingPointStart.setOnClickListener {
             startTour()
         }
+
+        context?.let {
+            Glide.with(it).load(listMainObj?.imgURL).into(listImg)
+        }
+
     }
 
     override fun onListContentFetched(listContent: ListContent) {
+        setListDetail(listContent)
+    }
+
+    private fun setListDetail(listContent: ListContent){
         listDetail.text = listContent.detail
         progressCard.visibility = View.INVISIBLE
         this.listContent = listContent
     }
+
 
     override fun setPresenter(presenter: ListMainContract.Presenter) {
         this.presenter = presenter
