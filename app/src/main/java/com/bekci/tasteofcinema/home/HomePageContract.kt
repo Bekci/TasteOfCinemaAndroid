@@ -8,6 +8,7 @@ interface HomePageContract {
 
     interface View : BaseView<Presenter> {
         fun onListFetched(listList :List<ListMainInfo>)
+        fun onListCannotFetched()
     }
 
     interface Presenter: BasePresenter {

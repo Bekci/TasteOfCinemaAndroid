@@ -1,11 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/themeViolet</item>
+        <item name="colorPrimaryDark">@color/themeHardViolet</item>
+        <item name="colorAccent">@color/themeMagenta</item>
     </style>
 
 
@@ -15,19 +15,23 @@
     <style name="AppTextTitleBigger" parent="AppText">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/themeViolet</item>
+        <item name="fontFamily">@font/libertine_bold</item>
     </style>
 
     <style name="AppTextTitle" parent="AppText">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/themeViolet</item>
+        <item name="fontFamily">@font/libertine_bold</item>
     </style>
 
     <style name="AppTextDetailBigger" parent="AppText">
         <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/libertine</item>
         <item name="android:textColor">@color/black</item>
     </style>
     <style name="AppTextDetail" parent="AppText">
         <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/libertine</item>
         <item name="android:textColor">@color/black</item>
     </style>
 

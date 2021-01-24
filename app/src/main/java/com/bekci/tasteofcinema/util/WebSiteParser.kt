@@ -1,8 +1,9 @@
 package com.bekci.tasteofcinema.util
 
 import com.bekci.tasteofcinema.ParserTask
-import com.bekci.tasteofcinema.`interface`.ParserInterface
-import com.bekci.tasteofcinema.`interface`.TaskInterface
+import com.bekci.tasteofcinema.contracts.DialogContract
+import com.bekci.tasteofcinema.contracts.ParserInterface
+import com.bekci.tasteofcinema.contracts.TaskInterface
 import com.bekci.tasteofcinema.model.Film
 import com.bekci.tasteofcinema.model.ListContent
 import com.bekci.tasteofcinema.model.ListMainInfo
@@ -32,11 +33,16 @@ object WebSiteParser {
                 }
                 parserInterface.onListsParsed(listListMainInfo)
             }
-            override fun onTaskFailed(error: Error) {
-                parserInterface.onListsParsed(listOf())
+            override fun onTaskFailed(error: String) {
+                parserInterface.onRequestFailed()
             }
         }
-        parserTask.execute(url)
+        try {
+            parserTask.execute(url)
+        }
+        catch (err: Exception){
+            err.printStackTrace()
+        }
     }
 
     fun parseListContent(listMainInfo: ListMainInfo, parserInterface: ParserInterface){
@@ -107,8 +113,8 @@ object WebSiteParser {
                 listContent.numPages = pageLinks.select("a").size + 1
                 parserInterface.onListContentParsed(listContent)
             }
-            override fun onTaskFailed(error: Error) {
-                parserInterface.onListContentParsed(ListContent())
+            override fun onTaskFailed(error: String) {
+                parserInterface.onRequestFailed()
             }
         }
         parserTask.execute(url)
@@ -152,8 +158,8 @@ object WebSiteParser {
                 films.add(currentFilm)
                 parserInterface.onListPageParsed(films)
             }
-            override fun onTaskFailed(error: Error) {
-                parserInterface.onListPageParsed(mutableListOf())
+            override fun onTaskFailed(error: String) {
+                parserInterface.onRequestFailed()
             }
         }
         parserTask.execute(url)

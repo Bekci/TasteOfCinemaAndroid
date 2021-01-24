@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/frag_imdbsearch_et_filmName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/frag_imdb_et_hint"
+        android:layout_margin="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text">
+    </EditText>
+
+    <Button
+        android:id="@+id/frag_imdbsearch_button_search"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/search_button"
+        app:layout_constraintBottom_toBottomOf="@+id/frag_imdbsearch_et_filmName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/frag_imdbsearch_et_filmName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/frag_imdbsearch_pb_progress"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frag_imdbsearch_et_filmName"
+        app:layout_constraintBottom_toTopOf="@id/frag_imdbsearch_button_cancel"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="invisible"
+        android:id="@+id/frag_imdbsearch_rv_films"
+        android:layout_width="0dp"
+        android:layout_height="350dp"
+        android:layout_margin="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frag_imdbsearch_et_filmName">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/frag_imdbsearch_button_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/themeMagenta"
+        android:text="@string/frag_imdb_button_cancel"
+        android:textColor="@color/white"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_imdbsearch_rv_films" />
+
+    <Button
+        android:id="@+id/frag_imdbsearch_button_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/themeLightGreen"
+        android:layout_margin="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/frag_imdb_button_done"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/frag_imdbsearch_rv_films" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

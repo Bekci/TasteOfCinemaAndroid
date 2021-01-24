@@ -1,22 +1,18 @@
 package com.bekci.tasteofcinema.adapter
 
 import android.content.Context
-import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bekci.tasteofcinema.R
-import com.bekci.tasteofcinema.`interface`.RecyclerClickInterface
+import com.bekci.tasteofcinema.contracts.RecyclerClickInterface
 import com.bekci.tasteofcinema.model.ListMainInfo
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.request.RequestOptions
-import kotlinx.android.synthetic.main.lists_list_item.view.*
 
 class HomePageListRecyclerAdapter(recyclerList: List<ListMainInfo>, clickInterface: RecyclerClickInterface, context : Context) :
     RecyclerView.Adapter<HomePageListRecyclerAdapter.ViewHolder>() {

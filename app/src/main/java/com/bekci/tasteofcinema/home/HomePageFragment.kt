@@ -1,6 +1,5 @@
 package com.bekci.tasteofcinema.home
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bekci.tasteofcinema.R
-import com.bekci.tasteofcinema.`interface`.RecyclerClickInterface
+import com.bekci.tasteofcinema.contracts.RecyclerClickInterface
 import com.bekci.tasteofcinema.adapter.HomePageListRecyclerAdapter
 import com.bekci.tasteofcinema.listmain.ListMainFragment
 import com.bekci.tasteofcinema.model.ListMainInfo
+import com.bekci.tasteofcinema.savedfilms.SavedFilmsFragment
 import com.bekci.tasteofcinema.util.ActivityUtil
+import com.bekci.tasteofcinema.util.AlertDialogUtil
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomePageFragment : Fragment(), HomePageContract.View, RecyclerClickInterface {
 
@@ -23,6 +25,7 @@ class HomePageFragment : Fragment(), HomePageContract.View, RecyclerClickInterfa
     private var isRecyclerInit : Boolean = false
     private var homePageListRecyclerAdapter : HomePageListRecyclerAdapter? = null
     private lateinit var progressCardView : CardView
+    private lateinit var savedFilmFab: FloatingActionButton
 
     companion object{
         const val TAG = "HomePageFragment"
@@ -42,26 +45,31 @@ class HomePageFragment : Fragment(), HomePageContract.View, RecyclerClickInterfa
         if(presenter == null)
             setPresenter(HomePagePresenter(this))
 
+        // When back from back button, fetch the first page
+        if(isRecyclerInit)
+            presenter?.resetNumFetchedPages()
+
         init(view)
 
-        //Show previous content when returned this fragment with back button
-        if(homePageListRecyclerAdapter != null){
-            isRecyclerInit = true
-            listRecycler.adapter = homePageListRecyclerAdapter
-        }
-        else{
-            isRecyclerInit = false
-            progressCardView.visibility = View.VISIBLE
-            presenter?.fetchLists()
-        }
+
+        progressCardView.visibility = View.VISIBLE
+        presenter?.fetchLists()
     }
 
     private fun init(view : View){
         listRecycler = view.findViewById(R.id.frag_home_rv_lists)
         progressCardView = view.findViewById(R.id.frag_home_cv_progress)
+        savedFilmFab = view.findViewById(R.id.frag_home_fab)
 
         progressCardView.visibility = View.INVISIBLE
         listRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        context?.let {
+            homePageListRecyclerAdapter = HomePageListRecyclerAdapter(mutableListOf(), this, it)
+        }
+
+        listRecycler.adapter = homePageListRecyclerAdapter
+        isRecyclerInit = true
 
         listRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             // Check the list reached to the end
@@ -74,22 +82,25 @@ class HomePageFragment : Fragment(), HomePageContract.View, RecyclerClickInterfa
             }
         })
 
+        savedFilmFab.setOnClickListener {
+            activity?.let {
+                ActivityUtil.changeFragment(SavedFilmsFragment(), SavedFilmsFragment.TAG,
+                    it.supportFragmentManager, R.id.act_main_fl_container, true)
+            }
+
+        }
+
     }
 
     override fun onListFetched(listList: List<ListMainInfo>) {
-        // First time that lists fetched. Init recycler's adapter
-        if (!isRecyclerInit){
-            context?.let {
-                homePageListRecyclerAdapter = HomePageListRecyclerAdapter(listList, this, it)
-                listRecycler.adapter = homePageListRecyclerAdapter
-                isRecyclerInit = true
-            }
-        }
-        // Add new items to recycler
-        else{
-            homePageListRecyclerAdapter?.addNewLists(listList)
-        }
+        homePageListRecyclerAdapter?.addNewLists(listList)
         progressCardView.visibility = View.INVISIBLE
+    }
+
+    override fun onListCannotFetched() {
+        activity?.runOnUiThread {
+            context?.let {  activity?.let { ait -> AlertDialogUtil.openNoInternetDialog(it, ait) }}
+        }
 
     }
 
@@ -108,6 +119,5 @@ class HomePageFragment : Fragment(), HomePageContract.View, RecyclerClickInterfa
                 it.supportFragmentManager, R.id.act_main_fl_container, true)
 
         }
-
     }
 }

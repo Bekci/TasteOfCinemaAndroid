@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Put your color for ripple effect -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/themeViolet">
+    <item android:id="@android:id/mask">
+        <shape android:shape="oval" >
+            <!-- Color not displayed,just to tell ripple about the bounds -->
+            <solid android:color="@android:color/black" />
+        </shape>
+    </item>
+    <item >
+        <shape android:shape="rectangle">
+            <solid android:color="@color/themeLightBlue" />
+            <corners android:radius="8dp"/>
+        </shape>
+
+    </item>
+    <!-- And your drawable -->
+    <item android:drawable="@drawable/search_icon" />
+
+</ripple>

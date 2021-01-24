@@ -1,22 +1,17 @@
 package com.bekci.tasteofcinema
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.bekci.tasteofcinema.`interface`.ParserInterface
+import com.bekci.tasteofcinema.contracts.ParserInterface
 import com.bekci.tasteofcinema.adapter.FilmSliderAdapter
 import com.bekci.tasteofcinema.model.Film
 import com.bekci.tasteofcinema.model.ListContent
 import com.bekci.tasteofcinema.model.ListMainInfo
-import com.bekci.tasteofcinema.singlefilm.SingleFilmFragment
 import com.bekci.tasteofcinema.util.WebSiteParser
 
 class SingleFilmPagerActivity : Fragment(), ParserInterface {
@@ -67,8 +62,11 @@ class SingleFilmPagerActivity : Fragment(), ParserInterface {
     override fun onListContentParsed(listContent: ListContent) {}
 
     override fun onListPageParsed(listFilms: List<Film>) {
-        Log.e(TAG, "List Page Fetched")
         if(listFilms.isNotEmpty())
             filmSliderAdapter.addNewFilms(listFilms)
+    }
+
+    override fun onRequestFailed() {
+
     }
 }

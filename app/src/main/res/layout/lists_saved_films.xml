@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_saved_films_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/themeHardLightGrey"
@@ -32,22 +33,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:src="@drawable/list_placeholder"
+    <ImageView
         android:id="@+id/item_saved_films_cv_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/item_lists_tv_title"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_left"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </de.hdodenhof.circleimageview.CircleImageView>
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <TextView
         android:id="@+id/item_saved_films_tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Film Title (Year)"
+        style="@style/AppTextTitle"
         android:layout_margin="10dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
@@ -57,21 +56,25 @@
         android:id="@+id/item_saved_films_tv_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="List Detail"
         android:layout_margin="10dp"
+        android:maxLines="4"
+        android:ellipsize="end"
+        style="@style/AppTextDetail"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@id/item_saved_films_tv_title" />
 
     <TextView
+        android:id="@+id/item_saved_films_tv_rating"
+        android:layout_margin="4dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="asdasdas"
+        style="@style/AppTextTitleBigger"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="parent">
-
     </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

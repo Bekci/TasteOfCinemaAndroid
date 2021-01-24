@@ -5,10 +5,14 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="themeMagenta">#ee334f</color>
     <color name="themeViolet">#CD106F</color>
+    <color name="themeHardViolet">#860a49</color>
     <color name="themeHardLightGrey">#FEFEFE</color>
     <color name="themeLightGrey">#E6E6E6</color>
     <color name="themeLightGreen">#6FCD10</color>
     <color name="themeMedGreen">#10CD6E</color>
+    <color name="themeLightBlue">#33adee</color>
 
 </resources>

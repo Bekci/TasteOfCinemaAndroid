@@ -40,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideline_top_1"
         android:orientation="horizontal">
         <TextView
+            android:gravity="center"
             style="@style/AppTextTitleBigger"
             android:id="@+id/frag_listmain_tv_title"
             android:layout_width="match_parent"
@@ -58,7 +59,7 @@
         <TextView
             style="@style/AppTextDetailBigger"
             android:id="@+id/frag_listmain_tv_detail"
-            android:layout_marginBottom="32dp"
+            android:paddingBottom="32dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </ScrollView>
@@ -71,7 +72,7 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/full_right_arrow"
+        app:srcCompat="@drawable/right_arrow_icon"
         android:contentDescription="@string/frag_listmain_start_tour"
         android:focusable="true" />
 
@@ -106,6 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="@string/frag_listmain_progress_text"
+                style="@style/AppTextDetail"
                 app:layout_constraintBottom_toBottomOf="@id/card_constraint"
                 app:layout_constraintEnd_toEndOf="@+id/progressBar"
                 app:layout_constraintStart_toEndOf="@+id/progressBar"

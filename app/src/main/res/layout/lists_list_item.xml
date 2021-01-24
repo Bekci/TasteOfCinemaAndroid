@@ -34,7 +34,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:src="@drawable/list_placeholder"
         android:id="@+id/item_lists_cv_image"
         android:layout_width="0dp"
         android:layout_height="0dp"

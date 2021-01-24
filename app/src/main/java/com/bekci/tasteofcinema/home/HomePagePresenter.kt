@@ -1,6 +1,7 @@
 package com.bekci.tasteofcinema.home
 
-import com.bekci.tasteofcinema.`interface`.ParserInterface
+import android.util.Log
+import com.bekci.tasteofcinema.contracts.ParserInterface
 import com.bekci.tasteofcinema.model.Film
 import com.bekci.tasteofcinema.model.ListContent
 import com.bekci.tasteofcinema.model.ListMainInfo
@@ -10,13 +11,19 @@ class HomePagePresenter(view: HomePageContract.View) : HomePageContract.Presente
 
     private var view: HomePageContract.View? = view
     private var currentListPage = 1
+    private var lastReqTime = 0L
 
     override fun fetchLists() {
-        WebSiteParser.parseLists(currentListPage, this)
+        // Disable consecutive calls
+        if(lastReqTime < 1000 || System.currentTimeMillis() - lastReqTime > 2000){
+            WebSiteParser.parseLists(currentListPage, this)
+            lastReqTime = System.currentTimeMillis()
+        }
     }
 
     override fun resetNumFetchedPages() {
         currentListPage = 1
+        lastReqTime = 0L
     }
 
     override fun onStart() {
@@ -37,5 +44,9 @@ class HomePagePresenter(view: HomePageContract.View) : HomePageContract.Presente
     }
 
     override fun onListPageParsed(listFilms: List<Film>) {}
+
+    override fun onRequestFailed() {
+        view?.onListCannotFetched()
+    }
 
 }

@@ -1,7 +1,6 @@
 package com.bekci.tasteofcinema.listmain
 
-import com.bekci.tasteofcinema.`interface`.ParserInterface
-import com.bekci.tasteofcinema.`interface`.TaskInterface
+import com.bekci.tasteofcinema.contracts.ParserInterface
 import com.bekci.tasteofcinema.model.Film
 import com.bekci.tasteofcinema.model.ListContent
 import com.bekci.tasteofcinema.model.ListMainInfo
@@ -26,5 +25,8 @@ class ListMainPresenter(view : ListMainContract.View) : ListMainContract.Present
     }
 
     override fun onListPageParsed(listFilms: List<Film>) {}
+    override fun onRequestFailed() {
+        view?.onListContentFetchFailed()
+    }
 
 }

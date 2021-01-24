@@ -16,6 +16,7 @@ import com.bekci.tasteofcinema.home.HomePagePresenter
 import com.bekci.tasteofcinema.model.ListContent
 import com.bekci.tasteofcinema.model.ListMainInfo
 import com.bekci.tasteofcinema.util.ActivityUtil
+import com.bekci.tasteofcinema.util.AlertDialogUtil
 import com.bekci.tasteofcinema.util.WebSiteParser
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -90,6 +91,12 @@ class ListMainFragment: Fragment(), ListMainContract.View {
 
     override fun onListContentFetched(listContent: ListContent) {
         setListDetail(listContent)
+    }
+
+    override fun onListContentFetchFailed() {
+        activity?.runOnUiThread {
+            context?.let {  activity?.let { ait -> AlertDialogUtil.openNoInternetDialog(it, ait) }}
+        }
     }
 
     private fun setListDetail(listContent: ListContent){

@@ -1,8 +1,8 @@
 package com.bekci.tasteofcinema
 
 import android.os.AsyncTask
-import com.bekci.tasteofcinema.`interface`.TaskInterface
-import com.bekci.tasteofcinema.model.ListMainInfo
+import com.bekci.tasteofcinema.contracts.TaskInterface
+import org.jsoup.HttpStatusException
 import org.jsoup.Jsoup
 import java.lang.Error
 
@@ -15,14 +15,16 @@ class ParserTask : AsyncTask<String?, Void, String>() {
         try {
             val document = Jsoup.connect(url).get()
             return document.toString()
-        }catch (err: Error){
-            taskInterface?.onTaskFailed(err)
+        }catch (err: Exception){
+            taskInterface?.onTaskFailed(err.message.toString())
         }
         return null
     }
 
     override fun onPostExecute(result: String?) {
         super.onPostExecute(result)
-        taskInterface?.onTaskSuccess(result.toString())
+        result?.let {
+            taskInterface?.onTaskSuccess(it.toString())
+        }
     }
 }

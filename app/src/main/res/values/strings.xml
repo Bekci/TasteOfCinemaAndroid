@@ -7,6 +7,20 @@
 
     <string name="frag_singlefilm_add_database">Add to List</string>
 
-
     <string name="frag_home_progress_text">Loading lists</string>
+    <string name="frag_home_frag_desc">Saved Films</string>
+
+    <string name="frag_savedfilm_progress_text">Loading films</string>
+
+    <string name="frag_imdb_et_hint">Enter the Name of the Film</string>
+    <string name="frag_imdb_button_cancel">Cancel</string>
+    <string name="frag_imdb_button_done">Done</string>
+
+
+    <string name="err_database_item_found">This item is already in your list!</string>
+    <string name="err_no_internet">Check your Internet connection!</string>
+    <string name="ok_film_added">Film added to your list</string>
+
+    <!--ENTER YOUR API KEY HERE-->
+    <string name="omdbapi"></string>
 </resources>
