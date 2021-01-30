@@ -8,6 +8,13 @@
 
 Note that this is an **unofficial** implementation of the Taste of Cinema platform.
 
+<img src="./imgs/page1.png"  width="250"/> 
+<img src="./imgs/page2.png"  width="250"/>
+<img src="./imgs/page3.png"  width="250"/>
+<img src="./imgs/page4.png"  width="250"/>
+<img src="./imgs/page5.png"  width="250"/>
+
+
 ## How to Use
 
 Clone this repository
