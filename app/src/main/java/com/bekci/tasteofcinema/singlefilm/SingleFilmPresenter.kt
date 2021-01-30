@@ -38,7 +38,7 @@ class SingleFilmPresenter(view: SingleFilmContract.View) : SingleFilmContract.Pr
     }
 
     override fun saveFilmDatabase(selectedFilm: OmdbFullFilm, filmDetail : String?, context : Context) {
-        val rating = if (selectedFilm.getImdbRating() == null) -1.0f  else selectedFilm.getImdbRating()!!.toFloat()
+        val rating = if (selectedFilm.getImdbRating() == null || selectedFilm.getImdbRating() == "N/A") -1.0f  else selectedFilm.getImdbRating()!!.toFloat()
 
         val filmDBO = FilmDBO(selectedFilm.getImdbID() ?: "", selectedFilm.getTitle() ?: "", filmDetail ?: "",
             selectedFilm.getYear()?.toInt() ?: 1900, selectedFilm.getPoster() ?: "", rating)

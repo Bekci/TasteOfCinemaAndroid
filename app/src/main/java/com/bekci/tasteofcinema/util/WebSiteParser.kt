@@ -108,9 +108,12 @@ object WebSiteParser {
                 // Finally add the last film
                 listContent.films.add(currentFilm)
                 // Evaluate number of pages
-                val pageLinks = doc.select("div.page-links")[0]
+                val pageLinks = if(doc.select("div.page-links").isNotEmpty())
+                    doc.select("div.page-links")[0].select("a").size
+                else
+                    doc.select("a.post-page-numbers").size
                 // 1 for the current page and others will be the links of the pages
-                listContent.numPages = pageLinks.select("a").size + 1
+                listContent.numPages = pageLinks + 1
                 parserInterface.onListContentParsed(listContent)
             }
             override fun onTaskFailed(error: String) {
