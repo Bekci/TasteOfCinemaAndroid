@@ -28,7 +28,8 @@ object WebSiteParser {
                     val listMeta = lc.select("div.entry-meta")[0].select("span.posted-on")[0].select("a")[0].select("time")[0].text()
                     val listDetail = lc.select("div.entry-content")[0].select("p").text()
                     val listImgUrl = lc.select("img.wp-post-image")[0].attr("src")
-                    val listInfo = ListMainInfo(listTitle, listDetail, listImgUrl, listMeta)
+                    val listURL = lc.select("h2")[0].select("a").attr("href")
+                    val listInfo = ListMainInfo(listTitle, listDetail, listImgUrl, listMeta, listURL)
                     listListMainInfo.add(listInfo)
                 }
                 parserInterface.onListsParsed(listListMainInfo)
@@ -46,7 +47,7 @@ object WebSiteParser {
     }
 
     fun parseListContent(listMainInfo: ListMainInfo, parserInterface: ParserInterface){
-        val url = createListURL(listMainInfo)
+        val url = listMainInfo.url
         val listContent = ListContent()
         listContent.date = listMainInfo.date
         listContent.title = listMainInfo.title

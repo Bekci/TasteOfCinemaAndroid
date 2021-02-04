@@ -9,19 +9,22 @@ class ListMainInfo() : Parcelable {
     var detail: String? = ""
     var imgURL: String? = ""
     var date: String? = ""
+    var url: String? = ""
 
     constructor(parcel: Parcel) : this() {
         title = parcel.readString()
         detail = parcel.readString()
         imgURL = parcel.readString()
         date = parcel.readString()
+        url = parcel.readString()
     }
 
-    constructor(title: String, detail: String, imgURL : String, date: String) : this() {
+    constructor(title: String, detail: String, imgURL : String, date: String, lURL: String) : this() {
         this.title = title
         this.date = date
         this.imgURL = imgURL
         this.detail = detail
+        this.url = lURL
 
     }
 
@@ -30,6 +33,7 @@ class ListMainInfo() : Parcelable {
         parcel.writeString(detail)
         parcel.writeString(imgURL)
         parcel.writeString(date)
+        parcel.writeString(url)
     }
 
     override fun describeContents(): Int {
